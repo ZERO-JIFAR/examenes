@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class MutantDNA {
 
+    // Metodo que verifica si la matriz de ADN es valida
     public static boolean isValidDNA(char[][] matrix) {
         char[] validLetters = {'A', 'T', 'C', 'G'};
         for (char[] row : matrix) {
@@ -19,13 +20,14 @@ public class MutantDNA {
                     }
                 }
                 if (!isValid) {
-                    return false; // Contiene letras no válidas
+                    return false; // Contiene letras no validas
                 }
             }
         }
         return true;
     }
 
+    // Metodo da formato a la entrada en una matriz de caracteres
     public static char[][] formatInput(String[] inputMatrix) {
         char[][] formattedMatrix = new char[inputMatrix.length][6];
         for (int i = 0; i < inputMatrix.length; i++) {
@@ -38,6 +40,7 @@ public class MutantDNA {
         return formattedMatrix;
     }
 
+    // Metodo que cuenta las secuencias mutantes en la matriz de ADN
     public static int countMutantSequences(char[][] dna) {
         int rowCount = dna.length;
         int colCount = dna[0].length;
@@ -55,12 +58,12 @@ public class MutantDNA {
                         dna[i][j] == dna[i + 1][j] && dna[i][j] == dna[i + 2][j] && dna[i][j] == dna[i + 3][j]) {
                     count++;
                 }
-                // Check diagonal (down-right)
+                // Check diagonal hacia la derecha
                 if (i + 3 < rowCount && j + 3 < colCount &&
                         dna[i][j] == dna[i + 1][j + 1] && dna[i][j] == dna[i + 2][j + 2] && dna[i][j] == dna[i + 3][j + 3]) {
                     count++;
                 }
-                // Check diagonal (down-left)
+                // Check diagonal hacia la izquierda
                 if (i + 3 < rowCount && j - 3 >= 0 &&
                         dna[i][j] == dna[i + 1][j - 1] && dna[i][j] == dna[i + 2][j - 2] && dna[i][j] == dna[i + 3][j - 3]) {
                     count++;
